@@ -1,3 +1,15 @@
+To create venv:
+		make venv
+
+To make lint:
+		make lint
+
+To do format:
+		make format
+
+
+
+
 Project Organization
 ------------
 
