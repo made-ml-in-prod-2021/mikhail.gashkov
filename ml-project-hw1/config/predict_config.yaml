@@ -1,0 +1,4 @@
+csv_to_predict: "data/heart.csv"
+predictions_saving_path: "data/predictions.csv"
+save_predictions_to_income_data_csv: False
+using_model_path: "data/model.pkl"
