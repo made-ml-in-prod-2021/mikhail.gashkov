@@ -6,7 +6,12 @@ To make lint:
 
 To do format:
 		make format
+To make predictions:
+		make predict
+To train model:
+		make train
 
+Please, change *.yaml files to config the classifier and input paths. 
 
 
 
