@@ -4,21 +4,17 @@ from typing import List
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 
-# CAT_FEATURES = ['sex', 'cp', 'restecg', 'exang', 'slope', 'ca', 'thal']
-# NUM_FEATURES = ['age', 'trestbps', 'chol', 'thalach', 'oldpeak']
-
 
 class DataPreparation:
     """
     Class for data preparation
     """
-
     def __init__(
         self,
         df: pd.DataFrame,
-        categorical_features: List[str],  # = CAT_FEATURES,
-        numerical_features: List[str],  # = NUM_FEATURES,
-        target_column: str = 'target',
+        categorical_features: List[str],
+        numerical_features: List[str],
+        target_column: str,
     ) -> None:
         self.df = df
         self.cat_features = categorical_features

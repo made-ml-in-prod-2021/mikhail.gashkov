@@ -4,15 +4,16 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import typer
-from load_config import (
+from sklearn.model_selection import train_test_split
+
+from .load_config import (
     DATA_CONFIG_FILE,
     PREDICT_CONFIG_FILE,
     TRAIN_CONFIG_FILE,
     load_config,
 )
-from model_pipeline.classifier import Classifier
-from model_pipeline.data_prepare import DataPreparation
-from sklearn.model_selection import train_test_split
+from .model_pipeline.classifier import Classifier
+from .model_pipeline.data_prepare import DataPreparation
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)

@@ -1,4 +1,3 @@
-TESTS = tests
 CODE = code
 ALL = $(CODE) $(TESTS)
 VENV ?= .venv
@@ -19,7 +18,10 @@ format:
 	$(VENV)/bin/autoflake --recursive --in-place --remove-all-unused-imports $(ALL)
 
 predict:
-	$(VENV)/bin/python code/run.py make-predictions
+	$(VENV)/bin/python maincode/run.py make-predictions
 
 train:
-	$(VENV)/bin/python code/run.py fit-classifier
+	$(VENV)/bin/python maincode/run.py fit-classifier
+
+test:
+	$(VENV)/bin/pytest -v tests/
