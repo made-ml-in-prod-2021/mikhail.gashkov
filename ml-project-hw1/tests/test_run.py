@@ -13,7 +13,6 @@ runner = CliRunner()
 def test_app_make_predictions(mock_data_config, mock_predict_config):
     mock_data_config = Path('tests/data_config_for_test.yaml')
     mock_predict_config = Path('tests/predict_config_for_tests.yaml')
-    runner = CliRunner()
     result = runner.invoke(typer_app, ["make-predictions"])
     assert result is None
 
