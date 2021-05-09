@@ -1,7 +1,6 @@
 from pathlib import Path
 from typing import List
 
-import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 
@@ -17,8 +16,8 @@ class DataPreparation:
     def __init__(
         self,
         df: pd.DataFrame,
-        categorical_features: List[str],# = CAT_FEATURES,
-        numerical_features: List[str],# = NUM_FEATURES,
+        categorical_features: List[str],  # = CAT_FEATURES,
+        numerical_features: List[str],  # = NUM_FEATURES,
         target_column: str = 'target',
     ) -> None:
         self.df = df

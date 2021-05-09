@@ -19,9 +19,10 @@ class Classifier:
     """
 
     def __init__(
-            self, model_type: str,
-            path: Path = os.path.curdir,
-            load_data_from_file: bool = False
+        self,
+        model_type: str,
+        path: Path = os.path.curdir,
+        load_data_from_file: bool = False,
     ) -> None:
         self.model_type = model_type
         self.features_num = None
@@ -38,10 +39,7 @@ class Classifier:
                 raise FileNotFoundError
 
     def save_model(self, model_save_path: Path):
-        joblib.dump(
-            (self.model_type, self.features_num, self.model),
-            model_save_path
-        )
+        joblib.dump((self.model_type, self.features_num, self.model), model_save_path)
 
     def fit(self, X: np.ndarray, y: np.ndarray) -> None:
         if self.model is None:

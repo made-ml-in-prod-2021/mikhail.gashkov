@@ -18,9 +18,8 @@ format:
 	$(VENV)/bin/black --skip-string-normalization $(ALL)
 	$(VENV)/bin/autoflake --recursive --in-place --remove-all-unused-imports $(ALL)
 
-#run:
-#	$(VENV)/bin/python code/run.py ???
-#	Not finished yet
+predict:
+	$(VENV)/bin/python code/run.py make-predictions
 
-
-
+train:
+	$(VENV)/bin/python code/run.py fit-classifier
