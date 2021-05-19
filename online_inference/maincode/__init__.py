@@ -1,1 +1,1 @@
-from app import app, GREETING_MESSAGE
+from backend import make_predictions

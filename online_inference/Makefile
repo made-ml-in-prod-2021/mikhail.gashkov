@@ -1,5 +1,5 @@
-CODE = code
-ALL = $(CODE) $(TESTS)
+CODE = maincode
+ALL = $(CODE) tests
 VENV ?= .venv
 
 venv:
