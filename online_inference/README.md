@@ -7,7 +7,8 @@ To make lint:
 To do format:
         make format
 
-
+To build docker container:
+        make build
 
 
 Самооценка

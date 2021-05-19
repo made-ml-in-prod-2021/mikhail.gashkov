@@ -17,5 +17,8 @@ format:
 	$(VENV)/bin/black --skip-string-normalization $(ALL)
 	$(VENV)/bin/autoflake --recursive --in-place --remove-all-unused-imports $(ALL)
 
+build:
+	docker image build .
+
 test:
 	$(VENV)/bin/pytest -v tests/
