@@ -1,4 +1,0 @@
-csv_to_predict: "tests/data_for_test/data_for_test.csv"
-predictions_saving_path: "tests/data_for_test/predictions_for_tests.csv"
-save_predictions_to_income_data_csv: False
-using_model_path: "tests/data_for_test/model_for_test.pkl"
