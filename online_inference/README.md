@@ -36,7 +36,7 @@ https://fastapi.tiangolo.com/tutorial/handling-errors/ -- возращайте 4
 
 5) Напишите dockerfile, соберите на его основе образ и запустите локально контейнер(docker build, docker run), внутри контейнера должен запускать сервис, написанный в предущем пункте, закоммитьте его, напишите в readme корректную команду сборки (4 балл)
 
--пока не сделано
+-Сборку сделать получилось (смотрите Makefile), а собрать почему-то нет
 
 6) Оптимизируйте размер docker image (3 доп балла) (опишите в readme.md что вы предприняли для сокращения размера и каких результатов удалось добиться)  -- https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
 
@@ -53,4 +53,4 @@ https://fastapi.tiangolo.com/tutorial/handling-errors/ -- возращайте 4
 
 -будет сделано 
 
-Итог: 12
+Итог: 12 (сборку не считал)
