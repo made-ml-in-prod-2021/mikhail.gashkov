@@ -1,4 +1,4 @@
-FROM images/aiflow-ml-base:latest
+FROM airflow-ml-base:latest
 
 COPY validate.py /validate.py
 

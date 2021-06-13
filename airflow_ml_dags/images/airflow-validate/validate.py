@@ -3,19 +3,24 @@ import pickle
 
 from sklearn.metrics import f1_score
 import pandas as pd
-import typer
-
-app = typer.Typer()
+import click
 
 
-@app.command()
-def generate_data(base_path: Path) -> None:
-    with open(base_path / Path('model') / Path('model.pkl'), 'rb') as f:
+@click.command()
+@click.option("--model-path")
+@click.option("--splitted-path")
+def predict(
+        model_path: str,
+        splitted_path: str
+) -> None:
+    model_path = Path(model_path)
+    with open(model_path / Path('model.pkl'), 'rb') as f:
         model = pickle.load(f)
-    test_data = pd.read_csv(base_path / Path('splitted') / Path('test_data.csv'))
+    splitted_path = Path(splitted_path)
+    test_data = pd.read_csv(splitted_path / Path('test_data.csv'))
     X = test_data.drop(columns=['target'], axis='columns')
     y = test_data['target'].values
-    with open(base_path / Path('model') / Path('f1_score.txt'), 'w') as f:
+    with open(model_path / Path('f1_score.txt'), 'w') as f:
         f.write(
             f1_score(
                 y, model.predict(X)
@@ -23,4 +28,4 @@ def generate_data(base_path: Path) -> None:
 
 
 if __name__ == '__main__':
-    app()
+    predict()

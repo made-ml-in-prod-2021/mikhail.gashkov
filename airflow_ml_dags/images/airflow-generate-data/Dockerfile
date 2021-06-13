@@ -1,4 +1,4 @@
-FROM images/aiflow-ml-base:latest
+FROM airflow-ml-base:latest
 
 COPY generate_data.py /generate_data.py
 

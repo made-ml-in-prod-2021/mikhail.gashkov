@@ -4,22 +4,25 @@ import os
 
 from sklearn.linear_model import LogisticRegression
 import pandas as pd
-import typer
-
-app = typer.Typer()
+import click
 
 
-@app.command()
+@click.command()
+@click.option("--splitted-path")
+@click.option("--model-path")
 def train(
-        base_path: Path,
+        splitted_path: str,
+        model_path: str
 ) -> None:
-    train_data = pd.read_csv(base_path / Path('splitted') / Path('train_data.csv'))
+    splitted_path = Path(splitted_path)
+    model_path = Path(model_path)
+    train_data = pd.read_csv(splitted_path / Path('train_data.csv'))
     y = train_data['target']
     X = train_data.drop(columns=['target'], axis='columns')
-    lg = LogisticRegression(max_iter=5_000).fit(train_data)
-    with open (base_path / Path('models') / Path('model.pkl'), 'wb') as f:
+    lg = LogisticRegression(max_iter=5_000).fit(X, y)
+    with open(model_path / Path('model.pkl'), 'wb') as f:
         pickle.dump(lg, f)
 
 
 if __name__ == '__main__':
-    app()
+    train()

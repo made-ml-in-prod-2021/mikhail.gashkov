@@ -1,5 +1,5 @@
-FROM python:3.8
+FROM python:3.6
 RUN mkdir /build/
-COPY requirements.txt /requirements.txt
+COPY requirements.txt /build/requirements.txt
 
-RUN pip install -r /requirements.txt
+RUN pip install -r /build/requirements.txt
