@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: online-inference-hw4
+  labels:
+    app: online-inference-hw4
+spec:
+  containers:
+    - image: mgashkov/online-inference-hw4:latest
+      name: online-inference-hw4
+      ports:
+        - containerPort: 8000
