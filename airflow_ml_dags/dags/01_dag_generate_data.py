@@ -20,7 +20,7 @@ with DAG(
     start_download = DummyOperator(task_id='begin-download-data')
 
     generate = DockerOperator(
-        image="mgashkov/airflow-generate-data",
+        image="airflow-generate-data",
         command=f"--raw-path {RAW_DATA_PATH}",
         network_mode="bridge",
         task_id="docker-airflow-generate-data",

@@ -19,7 +19,7 @@ with DAG(
 ) as dag:
 
     get_predictions = DockerOperator(
-        image="mgashkov/airflow-predict",
+        image="airflow-predict",
         command=f"--model-path {MODEL_PATH} --raw-path {RAW_DATA_PATH}",
         task_id="docker-airflow-predict",
         do_xcom_push=False,

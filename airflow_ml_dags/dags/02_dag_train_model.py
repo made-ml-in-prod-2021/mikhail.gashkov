@@ -23,7 +23,7 @@ with DAG(
     start_ml = DummyOperator(task_id='begin-do-ml')
 
     preprocess = DockerOperator(
-        image="mgashkov/airflow-preprocess",
+        image="airflow-preprocess",
         command=f"--raw-path {RAW_DATA_PATH} --preprocessed-path {PREPROCESSED_PATH}",
         task_id="docker-airflow-preprocess",
         do_xcom_push=False,
@@ -31,7 +31,7 @@ with DAG(
     )
 
     split = DockerOperator(
-        image="mgashkov/airflow-split",
+        image="airflow-split",
         command=f"--preprocessed-path {PREPROCESSED_PATH} --preprocessed-path {SPLITTED_PATH} --train-size {TRAIN_SIZE}",
         task_id="docker-airflow-split-data",
         do_xcom_push=False,
@@ -39,7 +39,7 @@ with DAG(
     )
 
     train = DockerOperator(
-        image="mgashkov/airflow-train-model",
+        image="airflow-train-model",
         command=f"--splitted-path {SPLITTED_PATH} --model-path {MODEL_PATH}",
         task_id="docker-airflow-train",
         do_xcom_push=False,
@@ -47,7 +47,7 @@ with DAG(
     )
 
     validate = DockerOperator(
-        image="mgashkov/airflow-validate",
+        image="airflow-validate",
         command=f"--model-path {MODEL_PATH} --splitted-path {SPLITTED_PATH}",
         task_id="docker-airflow-validate-model",
         do_xcom_push=False,

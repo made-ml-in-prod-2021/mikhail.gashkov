@@ -9,6 +9,7 @@ x-environment: &airflow_environment
   - AIRFLOW__CORE__STORE_SERIALIZED_DAGS=True
   - AIRFLOW__WEBSERVER__EXPOSE_CONFIG=True
   - AIRFLOW__CORE__FERNET_KEY=${FERNET_KEY}
+  - AIRFLOW_MOUNT_FOLDER=${AIRFLOW_MOUNT_FOLDER}
 
 
 x-airflow-image: &airflow_image apache/airflow:2.0.0-python3.6
@@ -40,14 +41,14 @@ services:
       --firstname Anonymous
       --lastname Admin
       --role Admin
-      --email admin@example.org'
-
+      --email admin@example.org
+      && airflow connections add fs_default --conn-type fs'
   webserver:
     build:
       context: images/airflow-docker
       args:
         AIRFLOW_BASE_IMAGE: *airflow_image
-    image: mgashkov/airflow-docker
+    image: airflow-docker
 
     restart: always
     depends_on:
@@ -64,7 +65,7 @@ services:
       context: images/airflow-docker
       args:
         AIRFLOW_BASE_IMAGE: *airflow_image
-    image: mgashkov/airflow-docker
+    image: airflow-docker
 
     restart: always
     depends_on:
@@ -80,44 +81,44 @@ services:
   ml_base:
     build:
       context: images/airflow-ml-base
-    image: mgashkov/airflow-ml-base
-    restart: "on-failure"
+    image: airflow-ml-base
+    restart: "no"
 
   generate_data:
     build:
       context: images/airflow-generate-data
-    image: mgashkov/airflow-generate-data
-    restart: "on-failure"
+    image: airflow-generate-data
+    restart: "no"
 
   preprocess:
     build:
       context: images/airflow-preprocess
-    image: mgashkov/airflow-preprocess
-    restart: "on-failure"
+    image: airflow-preprocess
+    restart: "no"
 
   split:
     build:
       context: images/airflow-split
-    image: mgashkov/airflow-split
-    restart: "on-failure"
+    image: airflow-split
+    restart: "no"
 
   train:
     build:
       context: images/airflow-train
-    image: mgashkov/airflow-train
-    restart: "on-failure"
+    image: airflow-train
+    restart: "no"
 
   validate:
     build:
       context: images/airflow-validate
-    image: mgashkov/airflow-validate
-    restart: "on-failure"
+    image: airflow-validate
+    restart: "no"
 
   predict:
     build:
       context: images/airflow-predict
-    image: mgashkov/airflow-predict
-    restart: "on-failure"
+    image: airflow-predict
+    restart: "no"
 
 
 volumes:
