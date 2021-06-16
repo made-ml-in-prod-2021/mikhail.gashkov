@@ -8,7 +8,6 @@ spec:
   containers:
     - image: n0tanbi4/online-inference-hw4:latest
       name: online-inference-hw4
-#      imagePullPolicy: Never
       ports:
         - containerPort: 8000
 

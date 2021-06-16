@@ -6,7 +6,7 @@ metadata:
     app: online-inference-hw4
 spec:
   containers:
-    - image: mgashkov/online-inference-hw4:latest
+    - image: n0tanbi4/online-inference-hw4:latest
       name: online-inference-hw4
       ports:
         - containerPort: 8000
