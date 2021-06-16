@@ -6,9 +6,11 @@ metadata:
     app: online-inference-hw4
 spec:
   containers:
-    - image: n0tanbi4/online-inference-hw4:latest
+    - image: mgashkov/online-inference-hw4:latest
       name: online-inference-hw4
-#      imagePullPolicy: Never
       ports:
         - containerPort: 8000
-
+      resources:
+        requests:
+          memory: 512Mi
+          cpu: 700m
