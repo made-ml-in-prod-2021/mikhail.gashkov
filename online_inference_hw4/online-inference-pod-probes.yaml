@@ -11,3 +11,15 @@ spec:
       ports:
         - containerPort: 8000
 
+      resources:
+        requests:
+          memory: 512Mi
+          cpu: 700m
+
+      readinessProbe:
+        initialDelaySeconds: 25
+        periodSeconds: 10
+
+      livenessProbe:
+        initialDelaySeconds: 25
+        periodSeconds: 10
