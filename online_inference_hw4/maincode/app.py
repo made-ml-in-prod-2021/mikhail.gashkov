@@ -1,11 +1,12 @@
 import logging
 import os
+from datetime import datetime
 from typing import List
 
 import uvicorn as uvicorn
 from fastapi import FastAPI, HTTPException
 from fastapi.exceptions import RequestValidationError
-from fastapi.responses import PlainTextResponse
+from fastapi.responses import JSONResponse, PlainTextResponse
 
 from backend import make_predictions
 from data_model import HealthModel, HealthResponse
@@ -13,6 +14,8 @@ from data_model import HealthModel, HealthResponse
 logger = logging.getLogger(__name__)
 
 app = FastAPI()
+START_TIME = datetime.now()
+FAIL_TIME = 100
 
 GREETING_MESSAGE = 'Hello, this is prediction health service. Go to /predict endopoint to predict on your data'
 
@@ -25,6 +28,19 @@ def read_root_handler():
 @app.exception_handler(HTTPException)
 def http_exception_handler(request, exc):
     return PlainTextResponse(str(exc.detail), status_code=exc.status_code)
+
+
+@app.get("/healthz")
+def health() -> JSONResponse:
+
+    now = datetime.now()
+    elapsed_time = now - START_TIME
+    if elapsed_time.seconds > FAIL_TIME:
+        raise Exception("App is dead by timeout")
+
+    return JSONResponse(
+        status_code=200
+    )
 
 
 @app.exception_handler(RequestValidationError)

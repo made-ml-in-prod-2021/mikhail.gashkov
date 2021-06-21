@@ -17,9 +17,15 @@ spec:
           cpu: 700m
 
       readinessProbe:
+        httpGet:
+          path: /healthz
+          port: 8000
         initialDelaySeconds: 25
         periodSeconds: 10
 
       livenessProbe:
+        httpGet:
+          path: /healthz
+          port: 8000
         initialDelaySeconds: 25
         periodSeconds: 10
