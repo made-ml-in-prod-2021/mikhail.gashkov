@@ -1,0 +1,11 @@
+output_model_path: "tests/data_for_test/model_for_test.pkl"
+classification_report_path: "tests/data_for_test/clf_report_for_test.csv"
+
+splitting_params:
+  train_size: 0.7
+  random_state: 23
+train_params:
+  # Log_reg or Grad_boost are implemented
+  classifier_type: "Log_reg"
+
+
